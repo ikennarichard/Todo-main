@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
-export default function Header() {
+export default function Header({ getTheme }) {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
@@ -33,22 +33,32 @@ export default function Header() {
     backgroundImagePath = 'assets/bg-desktop-light.jpg';
   }
 }
-  const backgroundImageStyle = {
+  const styles = {
     backgroundImage: `url(${backgroundImagePath})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   };
 
+  function handleToggle() {
+    getTheme()
+    toggleDarkMode()
+  }
+
   return (
-    <header style={backgroundImageStyle}>
+    <header style={styles}>
       <h1>TODO</h1>
       <div>
         <img src={isDarkMode ? 
           'assets/icon-sun.svg' : 
           'assets/icon-moon.svg'} 
           alt="theme icon" 
-          onClick={toggleDarkMode}
+          style={{
+            filter: isDarkMode ? 'brightness(300%)' : 
+            'brightness(0%)',
+            cursor: 'pointer'
+          }}
+          onClick={handleToggle}
           />
       </div>
     </header>
