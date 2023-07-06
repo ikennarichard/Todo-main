@@ -1,0 +1,1 @@
+`React context` provides a way to pass data around your component tree without having to pass it through each parent to the child. 

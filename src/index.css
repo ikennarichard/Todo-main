@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  /* linear-gradient  */
+  --check-background: linear-gradient(30deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  /* Light Theme */
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-grayish-blue-light: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  /* Dark theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+  /* Font size */
+  --font-size: 18px;
+  /* josefin sans */
+  --josefin-sans: 'Josefin Sans', sans-serif;
+}
+
+body {
+  display: grid;
+  line-height: 1.5;
+  font-size: var(--font-size);
+  font-family: var(--josefin-sans);
+  min-height: 100vh;
+  background-color: var(--very-light-gray);
+}
+
+main {
+  display: grid;
+}
+
+
+h1 {
+  color: white;
+  letter-spacing: 0.4rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  background: url(assets/bg-mobile-light.jpg) no-repeat;
+  height: 200px;
+  width: 100%;
+}
+
+.custom-btn {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--dark-grayish-blue);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: white;
+}
+
+.custom-btn.completed {
+  background: var(--check-background);
+}
+
+.cancel-btn {
+  appearance: none;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: white;
+}
+
+form {
+  background: white;
+  width: 100px;
+  margin-inline: auto;
+  padding: 15px 9px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  border-radius: 6px;
+}
+
+.input-item {
+  appearance: none; 
+  border: none;
+  outline: none;
+  background: none;
+  width: 80%;
+}
+
+.custom-btn.hover{
+  display: inline-block;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.custom-btn.hover::before,
+.custom-btn.hover::after {
+  content: "";
+  position: absolute;
+  /* z-index: -1; */
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.custom-btn.hover::before {
+  top: 30%;
+  left: 20%;
+  bottom: 0;
+  width: 8px;
+  height: 2px;
+  transform-origin: left center;
+  transform: translateY(45%) rotate(45deg);
+}
+
+.custom-btn.hover::after {
+  top: 30%;
+  right: 20%;
+  width: 11px;
+  height: 2px;
+  transform-origin: right center;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.custom-btn.hover {
+  background: var(--check-background);
+}
+
+.custom-btn.hover:hover::before,
+.custom-btn.hover:hover::after {
+ background: white;
+}
+
+.todo-list {
+  background-color: white;
+  width: 100%;
+  margin-inline: auto;
+  border-radius: 6px;
+}
+
+.todo-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+}
+
+.todo-text { 
+  flex: 1; 
+  font-size: 0.9rem;
+  width: 90%;
+}
+
+@media (min-width: 375px) {
+  .filters {
+    /* position: absolute; */
+    top: 180px;
+    padding: 1em .5em;
+    border-radius: 8px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .filters > * {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    font-weight: 700;
+    font-family: var(--josefin-sans);
+    font-size: 1em;
+    color: inherit;
+  }
+
+  .items-left {
+    border: 1px solid blue;
+    padding: 1em .5em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -0.6em;
+  }
+}
