@@ -21,22 +21,23 @@ export default function FilterOption({
   return (
   <div className="filter-container">
     <div className="items-left" style={{
-      backgroundColor: isDarkMode ? 'var(--very-light-gray)'
-      : 'var(--very-dark-blue)',
+      backgroundColor: isDarkMode ? 'var(--very-dark-blue)' :
+      'white'
+      ,
       color: isDarkMode ? 'var(--dark-grayish-blue-light)'
       : 'var(--dark-grayish-blue)',
     }}>
       <span>{count} item(s) left</span>
-      <button onClick={clearComplete}>
+      <button className='complete' onClick={clearComplete}>
         Clear Completed
       </button>
     </div>
       
     <div className="filters"  style={{
-      backgroundColor: isDarkMode ? 'var(--very-light-gray)'
-      : 'var(--very-dark-blue)',
-      color: isDarkMode ? 'var(--dark-grayish-blue-light)'
-      : 'var(--dark-grayish-blue)',
+      backgroundColor: isDarkMode ?  'var(--very-dark-blue)' : 
+      'var(--very-light-gray)',
+      color: isDarkMode ? 'var(--dark-grayish-blue)' : 
+      'var(--dark-grayish-blue-light)',
     }}>
       <button onClick={setOption}>All</button>
       <button onClick={setOption}>Active</button>
