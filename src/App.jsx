@@ -15,17 +15,27 @@ const data = [
 export default function App() {
   const [todos, setTodos] = useState(data);
   const [filterOption, setFilterOption] = useState('All');
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  function getThemeValue() {
+    setIsDarkMode((prev) => !prev)
+  }
 
 
   return (
     <ThemeProvider>
-        <Header/>
-        <List
-        todos={todos}
-        setTodo={setTodos}
-        filterOption={filterOption}
-        setFilterOption={setFilterOption}
-        />
+        <div className="wrapper" style={{
+          backgroundColor: isDarkMode ? 'var(--very-dark-blue)' : 
+          'white',
+        }}>
+          <Header getTheme={getThemeValue}/>
+          <List
+          todos={todos}
+          setTodo={setTodos}
+          filterOption={filterOption}
+          setFilterOption={setFilterOption}
+          />
+        </div>
     </ThemeProvider>
   )
 }
