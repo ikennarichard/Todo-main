@@ -1,5 +1,7 @@
 import FilterOption from './FilterOption';
 import TaskForm from './TaskForm';
+import { ThemeContext } from "../context/ThemeContext";
+import { useContext } from "react";
 
 export default function List({ 
   todos, 
@@ -7,13 +9,18 @@ export default function List({
   filterOption, 
   setFilterOption }) {
 
+  const { isDarkMode } = useContext(ThemeContext);
+
   const styles = {
     display: 'flex',
     gap: '5px',
     alignItens: 'center',
     justifyContent: 'space-around',
-    padding: '15px 10px',
-    borderBottom: '1px solid var(--dark-grayish-blue)'
+    padding: '1.2em 1em',
+    borderBottom: '1px solid var(--very-light-grayish-blue)',
+    backgroundColor: isDarkMode ? 'var(--very-dark-blue)' : 
+    'white',
+    transition: 'all 0.2s ease',
   }
 
   function removeItem(id) {
@@ -65,14 +72,20 @@ export default function List({
                 todo.completed ? <img src="assets/icon-check.svg" alt="check icon"/> : ""
                 } 
               </button>
-              <p className='todo-text'>
+              <p className='todo-text' style={{
+                color: isDarkMode ? 'var(--light-grayish-blue)' :
+                'var(--very-dark-grayish-blue)'
+              }}>
                   {todo.item}
               </p>
 
               <button 
               className='cancel-btn'
               onClick={() => removeItem(todo.id)}
-              style={{ cursor: 'pointer' }}
+              style={{ 
+                cursor: 'pointer',
+                filter: isDarkMode ? 'brightness(300%)' : '' 
+              }}
               >
                 <img 
                 src='assets/icon-cross.svg' 
