@@ -13,7 +13,7 @@
   /* Light Theme */
   --very-light-gray: hsl(0, 0%, 98%);
   --very-light-grayish-blue: hsl(236, 33%, 92%);
-  --light-grayish-blue: hsl(233, 11%, 84%);
+  --light-grayish-blue-light: hsl(233, 11%, 84%);
   --dark-grayish-blue-light: hsl(236, 9%, 61%);
   --very-dark-grayish-blue: hsl(235, 19%, 35%);
   /* Dark theme */
@@ -39,11 +39,6 @@ body {
   background-color: var(--very-light-gray);
 }
 
-main {
-  display: grid;
-}
-
-
 h1 {
   color: white;
   letter-spacing: 0.4rem;
@@ -54,11 +49,22 @@ img {
   display: block;
 }
 
+button {
+  cursor: pointer;
+}
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
 header {
   display: flex;
   align-items: baseline;
-  justify-content: space-around;
-  background: url(assets/bg-mobile-light.jpg) no-repeat;
+  justify-content: space-between;
+  padding-inline: 2em;
   height: 200px;
   width: 100%;
 }
@@ -67,7 +73,7 @@ header {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--dark-grayish-blue);
+  border: 1px solid var(--light-grayish-blue-light);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -79,24 +85,51 @@ header {
   background: var(--check-background);
 }
 
+.custom-btn:hover {
+  border-color: var(--bright-blue);
+}
+
 .cancel-btn {
   appearance: none;
   border: none;
   display: grid;
   place-items: center;
   cursor: pointer;
-  background-color: white;
+  background: none;
+  position: relative;
+}
+
+.cancel-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  background: var(--check-background);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.cancel-btn:hover::after {
+  opacity: 0.3;
+  transform: scale(1.7);
 }
 
 form {
   background: white;
   width: 100px;
   margin-inline: auto;
-  padding: 15px 9px;
+  padding: 1.2em 1em;
   width: 100%;
   display: flex;
   gap: 10px;
   border-radius: 6px;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  transition: all 0.2s ease;
 }
 
 .input-item {
@@ -105,6 +138,18 @@ form {
   outline: none;
   background: none;
   width: 80%;
+  /* padding: 0 1em; */
+  padding-top: 3px;
+}
+
+.light-gray::placeholder {
+  color: var(--light-grayish-blue-light);
+  font-weight: bold;
+}
+
+.dark-blue::placeholder {
+  color: var(--dark-grayish-blue);
+  font-weight: bold;
 }
 
 .custom-btn.hover{
@@ -127,14 +172,15 @@ form {
   top: 30%;
   left: 20%;
   bottom: 0;
-  width: 8px;
+  width: 5px;
   height: 2px;
   transform-origin: left center;
   transform: translateY(45%) rotate(45deg);
+  border: none;
 }
 
 .custom-btn.hover::after {
-  top: 30%;
+  top: 25%;
   right: 20%;
   width: 11px;
   height: 2px;
@@ -155,7 +201,8 @@ form {
   background-color: white;
   width: 100%;
   margin-inline: auto;
-  border-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .todo-container {
@@ -164,9 +211,10 @@ form {
   flex-direction: column;
   gap: 10px;
   position: absolute;
-  top: 100px;
+  top: 60px;
   left: 0;
   right: 0;
+  padding: 2em;
 }
 
 .filter-container {
@@ -178,8 +226,15 @@ form {
 
 .todo-text { 
   flex: 1; 
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   width: 90%;
+  display: flex;
+  align-items: baseline;
+  margin-inline-start: 1em;
+}
+
+.complete:hover {
+  color: var(--bright-blue);
 }
 
 @media (min-width: 375px) {
@@ -191,6 +246,7 @@ form {
     width: 80%;
     display: flex;
     justify-content: space-around;
+    margin-top: 5px;
   }
 
   .filters > * {
@@ -204,12 +260,26 @@ form {
     color: inherit;
   }
 
+  .filters > *:focus, .filters > *:hover {
+    color: var(--bright-blue);
+  }
+
   .items-left {
-    border: 1px solid blue;
     padding: 1em .5em;
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: -0.6em;
+    cursor: pointer;
+  }
+
+  .complete {
+    appearance: none;
+    background: none;
+    font-family: var(--josefin-sans);
+    outline: none;
+    border: none;
+    color: inherit;
+    font-size: 1em;
   }
 }
