@@ -40,7 +40,7 @@ Users should be able to:
 ### Links
 
 - [Github](https://github.com/ikennarichard/Todo-main)
-- [Live](https://your-live-site-url.com)
+- [Live](https://sparkly-todo.netlify.app)
 
 ## My process
 
