@@ -252,7 +252,7 @@ form {
 
 .filters {
   position: absolute;
-  bottom: -80px;
+  bottom: -70px;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1em .5em;
@@ -307,6 +307,18 @@ form {
   padding-left: 1.65em;
 }
 
+.drag-text {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  padding-bottom: 0.6em;
+  color: var(--very-dark-grayish-blue);
+  width: fit-content;
+  margin-inline: auto;
+  margin-top: 1em;
+}
+
 @media (min-width: 1000px) {
   .filters {
     position: static;
@@ -323,5 +335,9 @@ form {
     justify-content: space-around;
     margin-top: -0.6em;
     cursor: pointer;
+  }
+
+  .drag-text {
+    position: static;
   }
 }
