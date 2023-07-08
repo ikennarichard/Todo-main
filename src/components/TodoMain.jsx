@@ -58,6 +58,7 @@ export default function TodoMain({
       clearCompleted = {setTodo}
       count={setFilter().length} 
       />
+      <span className='drag-text'>Drag and drop to reorder the list</span>
   </div>
   )
 }
