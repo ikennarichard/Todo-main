@@ -27,11 +27,11 @@ export default function TaskForm({ todos, addTodoItem }) {
   }
 
   const styles = {
-    backgroundColor: isDarkMode ? 'var(--very-dark-blue)' : 
+    backgroundColor: isDarkMode ? 'var(--very-dark-desaturated-blue)' : 
     'white',
     color: isDarkMode ? 'var(--light-grayish-blue)' : 
     'var(--very-dark-grayish-blue)',
-  }
+    };
   
   return (
     <div className="form-container">
