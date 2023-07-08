@@ -29,12 +29,12 @@ export default function App() {
           'var(--light-gray)',
         }}>
           <Header getTheme={getThemeValue}/>
-          <TodoMain
-          todos={todos}
-          setTodo={setTodos}
-          filterOption={filterOption}
-          setFilterOption={setFilterOption}
-          />
+            <TodoMain
+            todos={todos}
+            setTodo={setTodos}
+            filterOption={filterOption}
+            setFilterOption={setFilterOption}
+            />
         </div>
     </ThemeProvider>
   )
