@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
-import List from "./components/List";
+import TodoMain from "./components/TodoMain";
 
 const data = [
   { id: 1, item: "Complete online JavsScript course", completed: true },
@@ -26,10 +26,10 @@ export default function App() {
     <ThemeProvider>
         <div className="wrapper" style={{
           backgroundColor: isDarkMode ? 'var(--very-dark-blue)' : 
-          'white',
+          'var(--light-gray)',
         }}>
           <Header getTheme={getThemeValue}/>
-          <List
+          <TodoMain
           todos={todos}
           setTodo={setTodos}
           filterOption={filterOption}
