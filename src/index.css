@@ -22,8 +22,8 @@
   --light-grayish-blue: hsl(234, 39%, 85%);
   --light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --very-dark-grayish-blue-1: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
   /* Font size */
   --font-size: 18px;
   /* josefin sans */
@@ -63,10 +63,19 @@ button {
 header {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
   padding-inline: 2em;
   height: 200px;
   width: 100%;
+}
+
+.heading-text {
+  padding-top: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 60%;
+  width: 300px;
 }
 
 .custom-btn {
@@ -121,8 +130,9 @@ form {
   background: white;
   width: 100px;
   margin-inline: auto;
-  padding: 1.2em 1em;
-  width: 100%;
+  padding: 1em 1em;
+  min-width: 60%;
+  width: 300px;
   display: flex;
   gap: 10px;
   border-radius: 6px;
@@ -137,6 +147,7 @@ form {
   border: none;
   outline: none;
   background: none;
+  display: block;
   width: 80%;
   /* padding: 0 1em; */
   padding-top: 3px;
@@ -198,11 +209,13 @@ form {
 }
 
 .todo-list {
-  background-color: white;
-  width: 100%;
+  min-width: 60%;
+  width: 300px;
   margin-inline: auto;
+  margin-top: 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+  transition: all 0.5s ease;
 }
 
 .todo-container {
@@ -211,7 +224,7 @@ form {
   flex-direction: column;
   gap: 10px;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 0;
   right: 0;
   padding: 2em;
@@ -237,49 +250,78 @@ form {
   color: var(--bright-blue);
 }
 
-@media (min-width: 375px) {
+.filters {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em .5em;
+  border-radius: 8px;
+  min-width: 40%;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 5px;
+  transition: all 0.5s ease;
+}
+
+.filters > * {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: 700;
+  font-family: var(--josefin-sans);
+  font-size: 1em;
+  color: inherit;
+}
+
+.filters > *:focus, .filters > *:hover {
+  color: var(--bright-blue);
+}
+
+.items-left {
+  padding: 1em .5em;
+  min-width: 60%;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -0.6em;
+  cursor: pointer;
+}
+
+.items-left > * {
+  flex: 1;
+}
+
+.complete {
+  appearance: none;
+  background: none;
+  font-family: var(--josefin-sans);
+  outline: none;
+  border: none;
+  color: inherit;
+  font-size: 1em;
+  padding-left: 1.65em;
+}
+
+@media (min-width: 1000px) {
   .filters {
-    /* position: absolute; */
-    top: 180px;
+    position: static;
+    transform: none;
     padding: 1em .5em;
     border-radius: 8px;
-    width: 80%;
-    display: flex;
     justify-content: space-around;
-    margin-top: 5px;
-  }
-
-  .filters > * {
-    appearance: none;
-    border: none;
-    outline: none;
     background: none;
-    font-weight: 700;
-    font-family: var(--josefin-sans);
-    font-size: 1em;
-    color: inherit;
-  }
-
-  .filters > *:focus, .filters > *:hover {
-    color: var(--bright-blue);
   }
 
   .items-left {
-    padding: 1em .5em;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     margin-top: -0.6em;
     cursor: pointer;
-  }
-
-  .complete {
-    appearance: none;
-    background: none;
-    font-family: var(--josefin-sans);
-    outline: none;
-    border: none;
-    color: inherit;
-    font-size: 1em;
   }
 }
